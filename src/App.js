@@ -1,29 +1,26 @@
 import React, { Component } from 'react';
-//This is the imported component
-import Element from './element';
 
 class App extends Component {
-  constructor () {
+  constructor ()
+  {
     super();
     this.state = {
-      header: "This is a header part",
-      content: "This is a content part"
+      data: "",
     }
   }
 
-//Function to update the state with setState function
-  btnHand ()
-  {
-    this.setState({
-      header: "New header text"
-    })
-  }
+//Function to handle the change in input field
+handle (event){
+  this.setState({
+    data: event.target.value
+  })
+}
 
   render() {
     return (
       <div className="App">
-      <p>{this.state.header}</p>
-      <button onClick={this.btnHand.bind(this)}>Click</button>
+      <input type="text" onChange={this.handle.bind(this)}/ >
+      <h1>{this.state.data}</h1>
       </div>
     );
   }
