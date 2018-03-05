@@ -1,33 +1,35 @@
 import React, { Component } from 'react';
 
 class App extends Component {
-  constructor (){
+  constructor ()
+  {
     super ();
-    this.state={
-      data: [
-        {
-          id:1,
-          name:'michael',
-        },
-        {
-          id:2,
-          name:'john',
-        },
-        {
-          id:3,
-          name:'smith',
-        }
-      ]
+    this.state = {
+      data: [],
     }
   }
+
+  componentDidMount ()
+  {
+    fetch('https://facebook.github.io/react-native/movies.json')
+    .then((Response)=>Response.json())
+    .then((finalResponse)=>{
+      console.log(finalResponse.movies);
+      this.setState({
+        data: finalResponse.movies,
+      })
+    })
+  }
+
   render() {
     return (
       <div>
       {
-        this.state.data.map((dynamicData,i) =>
+        this.state.data.map((dynamicData,key) =>
         <div>
-        <span>{dynamicData.id} </span>
-        <span>{dynamicData.name}</span>
+        <span>{key} </span>
+          <span>{dynamicData.title}: </span>
+          <span>{dynamicData.releaseYear}</span>
         </div>
       )
       }
