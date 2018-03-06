@@ -1,38 +1,24 @@
 import React, { Component } from 'react';
-
+//fun is a default function, the name can be any random name
+//funcions other than default needs to be in {} as shown below
+import fun, {other} from './fun';
 class App extends Component {
   constructor ()
   {
     super ();
+    //fun() is a default function
+    //other() is not default function whose name need to be exact as the function itself
+    fun();
+    other();
     this.state = {
       data: [],
     }
   }
 
-  componentDidMount ()
-  {
-    fetch('https://facebook.github.io/react-native/movies.json')
-    .then((Response)=>Response.json())
-    .then((finalResponse)=>{
-      console.log(finalResponse.movies);
-      this.setState({
-        data: finalResponse.movies,
-      })
-    })
-  }
 
   render() {
     return (
       <div>
-      {
-        this.state.data.map((dynamicData,key) =>
-        <div>
-        <span>{key} </span>
-          <span>{dynamicData.title}: </span>
-          <span>{dynamicData.releaseYear}</span>
-        </div>
-      )
-      }
       </div>
     );
   }
