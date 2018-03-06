@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
 class App extends Component {
-  constructor (){
-    super();
-    var callMe;
+
+//fetching is throwing error
+  componentWillMount (){
+    fetch('./request.php')
+    .then((response)=>response.json())
+    .then((responseJson)=>
+    {
+    console.log(responseJson)
+    })
   }
 
-  callMe = () => alert("Hello world");
     render() {
     return (
       <div className="App">
-      <h1>React event handling</h1>
-      <button onClick={()=>this.callMe()}>Click me</button>
+      <h1>Call php web service</h1>
       </div>
     );
   }
