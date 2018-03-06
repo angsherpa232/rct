@@ -2,37 +2,31 @@ import React, { Component } from 'react';
 class App extends Component {
   constructor (){
     super();
+    var operation;
     this.state = {
-      data: [
-        {
-          name: "john",
-          email: "john@gmail.com"
-        },
-        {
-          name: "kevin",
-          email: "kevin@gmail.com"
-        },
-        {
-          name: "sam",
-          email: "sam@gmail.com"
-        },
-      ]
+      showMe: true
     }
   }
+
+operation=()=>this.setState({
+  showMe: !this.state.showMe
+})
+
     render() {
     return (
-      <div className="App">
-      <h1>Map function</h1>
-      <h1>Map function in react</h1>
+      <div>
+      <h1>
+      Show and hide Elements
+      </h1>
       {
-        this.state.data.map((rowdata, key)=>
+        this.state.showMe?
         <div>
-        <span>{key} </span>
-        <span>{rowdata.name} </span><br/>
-        <span> {"  "}{rowdata.email} </span>
+        Please hide me
         </div>
-      )
+        :null
       }
+
+      <button onClick={()=>this.operation()}>Click me</button>
       </div>
     );
   }
