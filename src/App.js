@@ -1,37 +1,17 @@
 import React, { Component } from 'react';
+import Child from './Child';
 class App extends Component {
-  constructor (){
-    var edit;
-    super();
-    this.state={
-      data : [
-        {
-          name: 'jordan'
-        },
-        {
-          name: 'keli'
-        },
-        {
-          name: 'sid'
-        },
-      ]
-    }
+  constructor (props){
+    super(props)
+    var childCall;
   }
 
-  edit = (key)=>
-  {
-    console.log(this.refs[key].innerText='I am clicked')
-    this.refs[key].style.color='blue'
-  }
+  childCall = () => alert('This is call from Child');
 
     render() {
     return (
       <div>
-      {
-        this.state.data.map((displayData, key) =>
-        <button ref={key} onClick={()=>this.edit(key)}>{displayData.name}</button>
-      )
-      }
+    <h1><Child childCall={this.childCall.bind(this)} data="hello son"/></h1>
     </div>
     );
   }
