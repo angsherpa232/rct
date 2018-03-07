@@ -3,17 +3,67 @@ import Child from './Child';
 class App extends Component {
   constructor (props){
     super(props)
-    var childCall;
+    this.state={
+      data :[
+      {
+        name: 'john',
+        id: 10,
+        detail: [
+          {
+            email: 'john@gmail.com',
+            contact: '9999'
+          }
+        ],
+      },
+      {
+      name: 'david',
+      id: 11,
+      detail: [
+        {
+          email: 'david@gmail.com',
+          contact: '8888'
+        }
+      ],
+    },
+    {
+      name: 'sam',
+      id: 12,
+      detail: [
+        {
+          email: 'sam@gmail.com',
+          contact: '898989'
+        }
+      ],
+    }
+    ]
   }
-
-  childCall = () => alert('This is call from Child');
+  }
 
     render() {
     return (
       <div>
-    <h1><Child childCall={this.childCall.bind(this)} data="hello son"/></h1>
-    </div>
-    );
+      {
+        this.state.data.map((datarow,i)=>
+        <div>
+        {"Name: " + datarow.name}
+        {
+          (typeof(datarow.detail) == 'object')?
+            <div>
+            {datarow.detail.map((subrowData, k)=>
+              <div>
+              <div>{"Email: " + subrowData.email}</div>
+              <div>{"Contact: " + subrowData.contact}</div>
+              </div>
+            )}
+            </div>
+            :
+            null
+        }
+        </div>
+      )
+      }
+        </div>
+      )
   }
 };
 
